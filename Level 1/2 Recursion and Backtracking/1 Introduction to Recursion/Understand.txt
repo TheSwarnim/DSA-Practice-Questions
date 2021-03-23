@@ -1,0 +1,9 @@
+first make the expectation i.e. what 
+we expects from the current function
+
+then, work on the faith i.e. what will
+we stored in the faith
+
+now, try to combine the expectation with
+the faith and try to solve the bigger
+problem

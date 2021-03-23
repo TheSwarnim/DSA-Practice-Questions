@@ -1,0 +1,5 @@
+reversePI
+kthFromLast
+reverseLinkedList
+mergeSort
+removeDuplicates (unique approach using LinkedList (not by nodes))
