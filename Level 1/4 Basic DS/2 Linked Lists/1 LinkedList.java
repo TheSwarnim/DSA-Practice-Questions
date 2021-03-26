@@ -254,11 +254,11 @@ public class Main {
       return ml;
     }
 
-    public static Node midNode(Node head, Node tail){
+    public static Node midNode(Node head, Node tail) {
       Node f = head;
       Node s = head;
 
-      while(f != tail && f.next != tail){
+      while (f != tail && f.next != tail) {
         f = f.next.next;
         s = s.next;
       }
@@ -266,8 +266,8 @@ public class Main {
       return s;
     }
 
-    public static LinkedList mergeSort(Node head, Node tail){
-      if(head == tail){
+    public static LinkedList mergeSort(Node head, Node tail) {
+      if (head == tail) {
         LinkedList br = new LinkedList();
         br.addLast(head.data);
         return br;
@@ -279,10 +279,165 @@ public class Main {
       LinkedList sl = mergeTwoSortedLists(fsh, ssh);
       return sl;
     }
-  
-    public void removeDuplicates(){
+
+    public void removeDuplicates() {
+      LinkedList res = new LinkedList();
+
+      while (this.size() > 0) {
+        int val = this.getFirst();
+        this.removeFirst();
+
+        if (res.size() == 0 || val != res.tail.data) {
+          res.addLast(val);
+        }
+      }
+
+      this.head = res.head;
+      this.tail = res.tail;
+      this.size = res.size;
+    }
+
+    public void oddEven() {
+      LinkedList odd = new LinkedList();
+      LinkedList even = new LinkedList();
+
+      while (this.size > 0) {
+        int val = this.getFirst();
+        this.removeFirst();
+
+        if (val % 2 == 0) {
+          even.addLast(val);
+        } else {
+          odd.addLast(val);
+        }
+      }
+
+      if (odd.size > 0 && even.size > 0) {
+        odd.tail.next = even.head;
+
+        this.head = odd.head;
+        this.tail = even.tail;
+        this.size = odd.size + even.size;
+      } else if (odd.size > 0) {
+        this.head = odd.head;
+        this.tail = odd.tail;
+        this.size = odd.size;
+      } else if (even.size > 0) {
+        this.head = even.head;
+        this.tail = even.tail;
+        this.size = even.size;
+      }
+    }
+
+    public void kReverse(int k) {
+      LinkedList prev = null;
+
+      while (this.size > 0) {
+        LinkedList curr = new LinkedList();
+
+        if (this.size >= k) {
+          for (int i = 0; i < k; i++) {
+            int val = this.getFirst();
+            this.removeFirst();
+            curr.addFirst(val);
+          }
+        } else {
+          int sz = this.size;
+          for (int i = 0; i < sz; i++) {
+            int val = this.getFirst();
+            this.removeFirst();
+            curr.addLast(val);
+          }
+        }
+
+        if (prev == null) {
+          prev = curr;
+        } else {
+          prev.tail.next = curr.head;
+          prev.tail = curr.tail;
+          prev.size += curr.size;
+        }
+      }
+
+      this.head = prev.head;
+      this.tail = prev.tail;
+      this.size = prev.size;
+    }
+
+    private void displayReverseHelper(Node node) {
+      if (node == null) {
+        return;
+      }
+      displayReverseHelper(node.next);
+      System.out.print(node.data + " ");
+    }
+
+    public void displayReverse() {
+      displayReverseHelper(head);
+      System.out.println();
+    }
+
+    private void reversePRHelper(Node node) {
+      if (node == tail) {
+        return;
+      }
+      reversePRHelper(node.next);
+      node.next.next = node;
+    }
+
+    public void reversePR() {
+      reversePRHelper(head);
+      Node temp = head;
+      head = tail;
+      tail = temp;
+      tail.next = null;
+    }
+
+    private static int findIntersectionHelper(Node one, int pv1, Node two, int pv2){
+      // base case
+      if (one == null && two == null){
+        return -1;
+      }
+
+      int res;
+      if(pv1 > pv2){
+        res = findIntersectionHelper(one.next, pv1-1, two, pv2);
+      } else if(pv1 < pv2){
+        res = findIntersectionHelper(one, pv1, two.next, pv2-1);
+      } else {
+        if(one == two){
+          res = one.data;
+        } else {
+          res = findIntersectionHelper(one.next, pv1 - 1, two.next, pv2 - 1);
+        }
+      }
+
+      return res;
+    }
+
+    public static int findIntersection(LinkedList one, LinkedList two){
       // write your code here
-      
+      Node t1 = one.head;
+      Node t2 = two.head;
+
+      int delta = Math.abs(one.size - two.size);
+      if(one.size > two.size){
+        for (int i = 0; i < delta; i++) {
+          t1 = t1.next;
+        }
+      } else{
+        for (int i = 0; i < delta; i++) {
+          t2 = t2.next;
+        }
+      }
+
+      while(t1 != t2){
+        t1 = t1.next;
+        t2 = t2.next;
+      }
+
+      // return findIntersectionHelper(one.head, one.size(), two.head, two.size());
+      return t1.data;
     }
   }
 
@@ -297,8 +452,29 @@ public class Main {
       l1.addLast(d);
     }
 
-    l1.display();
-    l1.removeDuplicates();
-    l1.display();
+    int n2 = Integer.parseInt(br.readLine());
+    LinkedList l2 = new LinkedList();
+    String[] values2 = br.readLine().split(" ");
+    for (int i = 0; i < n2; i++) {
+      int d = Integer.parseInt(values2[i]);
+      l2.addLast(d);
+    }
+
+    int li = Integer.parseInt(br.readLine());
+    int di = Integer.parseInt(br.readLine());
+    if(li == 1){
+      Node n = l1.getNodeAt(di);
+      l2.tail.next = n;
+      l2.tail = l1.tail;
+      l2.size += l1.size - di;
+    } else {
+      Node n = l2.getNodeAt(di);
+      l1.tail.next = n;
+      l1.tail = l2.tail;
+      l1.size += l2.size - di;
+    }
+
+    int inter = LinkedList.findIntersection(l1, l2);
+    System.out.println(inter);
   }
 }

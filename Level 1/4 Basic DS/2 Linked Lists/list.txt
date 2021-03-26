@@ -1,5 +1,12 @@
+These are some of the important implementations in LinkedList Class
+
 reversePI
 kthFromLast
 reverseLinkedList
 mergeSort
 removeDuplicates (unique approach using LinkedList (not by nodes))
+kReverse
+Reverse Linked List (pointer - Recursive) [Good approach given]
+IsPalindrome
+fold (see Recursive approach)
+addTwoLists
