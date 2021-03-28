@@ -1,1 +1,6 @@
 levelOrderLinewise
+Lowest Common Ancestor (generic Tree) [IMP]
+IsSymmetric (the logic is that if the generic tree is mirror of itself then it is symmetric)
+Predecessor And Successor Of An Element (Imp strategy)
+Kth Largest Element In Tree (Gajab ki approach)
+Iterative Preorder And Postorder Of Generic Tree.java
