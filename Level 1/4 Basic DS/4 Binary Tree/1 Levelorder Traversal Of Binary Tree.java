@@ -79,44 +79,27 @@ public class Main {
     display(node.right);
   }
 
-  public static void iterativePrePostInTraversal(Node node) {
-    Stack<Pair> st = new Stack<>();
-    Pair rtp = new Pair(node, 1);
-    st.push(rtp);
+  public static void levelOrder(Node node) {
+    Queue<Node> mq = new ArrayDeque<Node>();
+    mq.add(node);
 
-    String pre = "";
-    String in = "";
-    String post = "";
+    while(mq.size() > 0){
+        int cnt = mq.size();
+        for(int i = 0; i < cnt; i++){
+            node = mq.remove();
+            System.out.print(node.data + " ");
 
-    while(st.size() > 0){
-      Pair top = st.peek();
+            if(node.left != null){
+                mq.add(node.left);
+            }
 
-      if(top.state == 1){
-        pre += top.node.data + " ";
-        top.state++;
-
-        if(top.node.left != null){
-          Pair lp = new Pair(top.node.left, 1);
-          st.push(lp);
+            if(node.right != null){
+                mq.add(node.right);
+            }
         }
-      } else if(top.state == 2){
-        in += top.node.data + " ";
-        top.state++;
 
-        if(top.node.right != null){
-          Pair rp = new Pair(top.node.right, 1);
-          st.push(rp);
-        }
-      } else {
-        // state is 3 here
-        post += top.node.data + " ";
-        st.pop();
-      }
+        System.out.println();
     }
-
-    System.out.println(pre);
-    System.out.println(in);
-    System.out.println(post);
   }
 
   public static void main(String[] args) throws Exception {
@@ -133,7 +116,7 @@ public class Main {
     }
 
     Node root = construct(arr);
-    iterativePrePostInTraversal(root);
+    levelOrder(root);
   }
 
 }
