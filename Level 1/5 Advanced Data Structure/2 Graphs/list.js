@@ -8,3 +8,7 @@ const impAlgoriths = {
 };
 
 const DirectedAsylicGraph = ["topologicalSort"];
+
+const impQuestions = {
+  3: "A all in one compiled question till above questions, visiting graph, doing some operations, and traversing graph, etc.",
+};
