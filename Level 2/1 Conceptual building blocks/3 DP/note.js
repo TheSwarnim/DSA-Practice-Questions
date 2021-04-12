@@ -1,4 +1,4 @@
-const impQuestions = [2, 3, 6, 17("see pepcoding"), 18];
+const impQuestions = [2, 3, 6, 17("see pepcoding"), 18, 19, 20];
 
 const notesOnQuestions = {
   2: "A good example of lis + lds",
@@ -14,6 +14,10 @@ const notesOnQuestions = {
   17: "It is count of catalian number instead, Count Of Valleys And Mountains is also it's application, count brackets, circle and chords",
 
   18: "Loda lag gye is saval ma, upar wale ka (catalian number) ki hi application ha",
+
+  19: "Iska second part ki approach ha 🔥🔥",
+
+  23: "Jst understand the trick behind it...",
 };
 
 const impNotes = {

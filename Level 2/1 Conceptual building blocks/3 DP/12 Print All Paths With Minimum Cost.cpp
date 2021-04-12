@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define Vi vector<int>
+#define vi vector<int>
+#define vvi vector<vi>
 
 bool debug;
 void optimize(){
@@ -31,18 +32,16 @@ void displayMatrix(vector<vector<int>> &arr){
 
 class Pair{
     public:
+        int i;
+        int j;
         string psf;
-        int i; // row
-        int j; // column
-
-        Pair(string psf, int i, int j): psf(psf), i(i), j(j){}
+        Pair(int i, int j, string psf): i(i), j(j), psf(psf) {}
 };
 
 void solve(){
     int n, m;
     cin >> n >> m;
-
-    vector<Vi> arr(n, Vi(m));
+    vvi arr(n, vi(m));
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -51,56 +50,54 @@ void solve(){
         }        
     }
     
-    vector<Vi> dp(n, Vi(m));
-
+    vvi dp(n, vi(m));
     for (int i = n - 1; i >= 0; i--)
     {
         for (int j = m - 1; j >= 0; j--)
         {
             if(i == n - 1 && j == m - 1){
                 dp[i][j] = arr[i][j];
-            } else if(i == n - 1) {
-                dp[i][j] = dp[i][j + 1] + arr[i][j];
-            } else if(j == m - 1) {
-                dp[i][j] = dp[i + 1][j] + arr[i][j];
+            } else if(i == n - 1){
+                dp[i][j] = arr[i][j] + dp[i][j + 1];
+            } else if(j == m - 1){
+                dp[i][j] = arr[i][j] + dp[i + 1][j];
             } else {
-                dp[i][j] = min(dp[i + 1][j], dp[i][j + 1]) + arr[i][j];
+                dp[i][j] = arr[i][j] + min(dp[i][j + 1], dp[i + 1][j]);
             }
-        }
+        }        
     }
     
-    // displayMatrix(dp);
     cout << dp[0][0] << endl;
-    
+    // displayMatrix(dp);
+
     queue<Pair> queue;
-    queue.push(Pair("", 0, 0));
+    queue.push(Pair(0, 0, ""));
 
     while (!queue.empty()){
         Pair rem = queue.front();
         queue.pop();
 
-
         int i = rem.i;
         int j = rem.j;
         string psf = rem.psf;
 
-        // base case
-        if(rem.i == n - 1 && rem.j == m - 1){
-            cout << rem.psf << endl;
-        } else if(rem.i == n - 1){
-            queue.push(Pair(psf + "H", i, j + 1));
-        } else if(rem.j == m - 1){
-            queue.push(Pair(psf + "V", i + 1, j));
-        } else {
-            if(arr[i + 1][j] < arr[i][j + 1]){
-                queue.push(Pair(psf + "V", i + 1, j));
-            } else if(arr[i + 1][j] > arr[i][j + 1]){
-                queue.push(Pair(psf + "H", i, j + 1));
-            } else {
-                queue.push(Pair(psf + "V", i + 1, j));
-                queue.push(Pair(psf + "H", i, j + 1));
+        if(i == n - 1 && j == m - 1){
+            // base case
+            cout << psf << endl;
+        } else if(i == n - 1){
+            queue.push(Pair(i, j + 1, psf + "H"));
+        } else if(j == m - 1){
+            queue.push(Pair(i + 1, j, psf + "V"));
+        } else{
+            if(dp[i + 1][j] < dp[i][j + 1]){
+                queue.push(Pair(i + 1, j, psf + "V"));
+            } else if(dp[i + 1][j] > dp[i][j + 1]){   
+                queue.push(Pair(i, j + 1, psf + "H"));
+            } else{
+                queue.push(Pair(i + 1, j, psf + "V"));
+                queue.push(Pair(i, j + 1, psf + "H"));
             }
-        }  
+        }
     }
 }
 

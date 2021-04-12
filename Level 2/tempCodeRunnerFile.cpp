@@ -1,0 +1,1 @@
+ltc * rtc + lfc * rfc
