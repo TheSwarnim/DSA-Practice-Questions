@@ -19,12 +19,24 @@ void calcTime(){
     }
 }
 
+struct Temp{
+    int a;
+    int b;
+
+    Temp(int a, int b): a(a), b(b){}
+};
+
+void test(int &cnt){
+    cnt++;
+    cout << cnt << endl;
+}
+
 void solve(){
-    int n = 5;
+    int cnt = 0;
 
-    int k = 2;
+    test(cnt);
 
-    cout << (k == 1 && n) << endl;
+    cout << cnt << endl;
 }
 
 int main(){
