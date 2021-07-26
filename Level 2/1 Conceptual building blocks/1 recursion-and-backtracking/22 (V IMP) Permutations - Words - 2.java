@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+class Main {
   public static void display(Character[] spots) {
     for (Character ch : spots) {
         System.out.print(ch);

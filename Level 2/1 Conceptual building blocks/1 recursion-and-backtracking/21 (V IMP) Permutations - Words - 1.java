@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+class Main {
 
   public static void generateWords(int cs, int ts, HashMap<Character, Integer> fmap, String asf) {
     // base case

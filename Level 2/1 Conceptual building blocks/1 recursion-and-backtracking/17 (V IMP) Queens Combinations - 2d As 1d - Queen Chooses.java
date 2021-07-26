@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Main {
+class Main {
 
     public static void queensCombinations(int qpsf, int tq, boolean[][] chess, int lcno) {
         // base case

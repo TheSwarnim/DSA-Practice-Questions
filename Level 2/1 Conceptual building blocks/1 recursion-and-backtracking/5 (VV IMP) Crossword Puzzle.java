@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+class Main {
 
 	public static void solution(char[][] arr, String[] words, int vidx){
 		if(vidx == words.length){

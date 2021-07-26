@@ -76,14 +76,16 @@ void solve(){
     int cnt = 0;
     used.assign(n, false);
     for (size_t i = 0; i < n; i++)
-    {
+    { 
         int v = order[n - 1 - i];
         if (!used[v]){
+            cout << v << " ";
             dfs2(v);
             cnt++;
         }
     }    
 
+    cout << endl;
     cout << cnt << endl;
 }
 

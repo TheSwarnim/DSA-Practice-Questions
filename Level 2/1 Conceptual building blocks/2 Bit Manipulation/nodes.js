@@ -8,7 +8,7 @@ const remember = {
 };
 
 const questionRelations = {
-  1: "7wa ques 6te wale ka hi extension ha, par approach bhaisahab gajab ha 🔥🔥",
+  7: "7wa ques 6te wale ka hi extension ha, par approach bhaisahab gajab ha 🔥🔥",
 
   17: "it is the best application of << and >>",
 
@@ -21,3 +21,5 @@ const questionRelations = {
 
 const vImpQuestions = [3, 4, 5, 8, 9(approach)];
 // completed revision till ques 9
+const fastRackRevisionQues = [3];
+// completed revision till ques 3

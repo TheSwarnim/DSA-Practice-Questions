@@ -1,21 +1,26 @@
+const quesToRev = "all";
+
 const notesOnQuestions = {
   1: "Gand lag gye isa lagana ma, bellManFord walo na laga di...",
 
   3: "Pepcoder And Reversing (neecha dekh detail explanation bhi, mene bananya ha yeh 1.5 hr tak gand ghisani padi tab jake bana, par maza aae gya 😎😎",
 
+  4: "Implementation of Kahn's Algo",
+
   5: "Kosaraju Algorithm (Strongly Connected Components) implementation (VVIMP)",
 
-  6: "Mother Vertex implementation(V IMP)",
+  6: "Mother Vertex implementation(V IMP) use dfs (sabsa upar wala hoga yeh koi bhi nahi hoga)",
 };
 
 const KosarajuAlgorithm = {
-  SSC: "Strongly Connected Components (Another name of this algo",
+  SSC: "Strongly Connected Components (Another name of this algo)",
 
   1: "Single Node is always a SSC",
 
   2: "If we can reach from every vertex to every other vertex in a component then it is called SSC",
 
   3: "All the nodes in a component are always a strongly connected in an undirected graph",
+  3: "Iska other part ki approach ko 0-1 BFS bhi kheta ha, see the pepcoding yt channel Advanced Graph playlist",
 
   4: "No of SSC = no. of components {in an undirected graph}",
 };

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+class Main {
 
     public static boolean IsQueenSafe(int[][] chess, int row, int col) {
         int n = chess.length;

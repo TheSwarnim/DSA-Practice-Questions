@@ -1,3 +1,6 @@
+const mostImpQues = [9, 10("imp"), 16("not understood"), 18, 20("both")];
+// last revision till ques 25
+
 const impQuestions = [2, 3, 6, 17("see pepcoding"), 18, 19, 20];
 
 const notesOnQuestions = {

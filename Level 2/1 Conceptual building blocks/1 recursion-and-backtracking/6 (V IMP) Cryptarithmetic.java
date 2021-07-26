@@ -1,7 +1,6 @@
-import java.io.*;
 import java.util.*;
 
-public class Main {
+class Main {
 
   public static void main(String[] args) {
     Scanner scn = new Scanner(System.in);
@@ -34,6 +33,8 @@ public class Main {
 
     boolean[] usedNumbers = new boolean[10];
     solution(unique, 0, charIntMap, usedNumbers, s1, s2, s3);
+
+	scn.close();
   }
 
   public static int getNum(String s, HashMap<Character, Integer> charIntMap){

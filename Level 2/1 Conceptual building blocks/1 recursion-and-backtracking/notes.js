@@ -1,3 +1,5 @@
+const quesToRev = [4, 5, 6];
+
 const impQuestions = {
   4: "The approach to find the sub matrix, and how efficiently used the backtracking to solve the question is interesting",
 
@@ -17,6 +19,3 @@ const impQuestions = {
 
   22: "21 wala alag method sa kia ha aur bhaisahab kya bhuddi lagani padi isma",
 };
-
-const mImpQuesForRevision = [1, 4, 5, 6];
-// questions revised till 7
